@@ -85,6 +85,7 @@ lazy val http = Project("elastic4s-http", file("elastic4s-http"))
     libraryDependencies ++= Seq(
       "org.elasticsearch.client"     % "elasticsearch-rest-client" % ElasticsearchVersion,
       "org.apache.logging.log4j"     % "log4j-api"                 % Log4jVersion % "test",
+      "org.scala-lang.modules"       %% "scala-parser-combinators" % "1.1.2" % Test,
       "com.fasterxml.jackson.core"   % "jackson-core"              % JacksonVersion,
       "com.fasterxml.jackson.core"   % "jackson-databind"          % JacksonVersion,
       "com.fasterxml.jackson.module" %% "jackson-module-scala"     % JacksonVersion exclude ("org.scala-lang", "scala-library")
