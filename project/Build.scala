@@ -1,9 +1,9 @@
 import com.jsuereth.sbtpgp.SbtPgp
 import com.jsuereth.sbtpgp.PgpKeys
 import sbt._
-import sbt.plugins.JvmPlugin
 import sbt.Keys._
 import sbtrelease.ReleasePlugin
+import xerial.sbt.Sonatype.SonatypeKeys.sonatypePublishToBundle
 
 object Build extends AutoPlugin {
 
@@ -60,15 +60,9 @@ object Build extends AutoPlugin {
       "org.mockito"            % "mockito-all"              % MockitoVersion % "test",
       "org.scalatest"          %% "scalatest"               % ScalatestVersion % "test"
     ),
-    publishTo := {
-      val nexus = "https://oss.sonatype.org/"
-      if (version.value.trim.endsWith("SNAPSHOT"))
-        Some("snapshots" at nexus + "content/repositories/snapshots")
-      else
-        Some("releases" at nexus + "service/local/staging/deploy/maven2")
-    },
+    publishTo := sonatypePublishToBundle.value,
     pomExtra := {
-      <url>https://github.com/sksamuel/elastic4s</url>
+      <url>https://github.com/ohze/elastic4s</url>
         <licenses>
           <license>
             <name>Apache 2</name>
@@ -76,10 +70,6 @@ object Build extends AutoPlugin {
             <distribution>repo</distribution>
           </license>
         </licenses>
-        <scm>
-          <url>git@github.com:sksamuel/elastic4s.git</url>
-          <connection>scm:git@github.com:sksamuel/elastic4s.git</connection>
-        </scm>
         <developers>
           <developer>
             <id>sksamuel</id>
