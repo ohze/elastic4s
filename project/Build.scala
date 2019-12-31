@@ -11,7 +11,7 @@ object Build extends AutoPlugin {
   override def requires = ReleasePlugin
 
   object autoImport {
-    val org                    = "com.sksamuel.elastic4s"
+    val org                    = "com.sandinh"
     val AkkaVersion            = "2.6.1"
     val CatsVersion            = "2.1.0"
     val CirceVersion           = "0.12.3"
