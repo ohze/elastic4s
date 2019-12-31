@@ -45,7 +45,7 @@ class DateRangeQueryHttpTest
           rangeQuery("premiere_date").gte(ElasticDateMath("now").minus(5, Years))
         }
       }.await.right.get.result
-      resp.totalHits shouldBe 3
+      resp.totalHits shouldBe 2
     }
     "support date math for lte" in {
       val resp = http.execute {
