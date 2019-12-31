@@ -45,23 +45,28 @@ case class SearchHit(@JsonProperty("_id") id: String,
   override def exists: Boolean = true
 
   private def buildInnerHits(_hits: Map[String, Map[String, Any]]): Map[String, InnerHits] =
-    Option(_hits).getOrElse(Map.empty).mapValues { hits =>
-      val v = hits("hits").asInstanceOf[Map[String, AnyRef]]
-      InnerHits(
-        total = v("total").toString.toLong,
-        max_score = v("max_score").asInstanceOf[Double],
-        hits = v("hits").asInstanceOf[Seq[Map[String, AnyRef]]].map { hits =>
-          InnerHit(
-            nested = hits.get("_nested").map(_.asInstanceOf[Map[String, AnyRef]]).getOrElse(Map.empty),
-            score = hits("_score").asInstanceOf[Double],
-            source = hits("_source").asInstanceOf[Map[String, AnyRef]],
-            innerHits = buildInnerHits(hits.getOrElse("inner_hits", null).asInstanceOf[Map[String, Map[String, Any]]]),
-            highlight = hits.get("highlight").map(_.asInstanceOf[Map[String, Seq[String]]]).getOrElse(Map.empty),
-            sort = hits.get("sort").map(_.asInstanceOf[Seq[AnyRef]]).getOrElse(Seq.empty)
-          )
-        }
-      )
-    }.toMap
+    Option(_hits)
+      .getOrElse(Map.empty)
+      .mapValues { hits =>
+        val v = hits("hits").asInstanceOf[Map[String, AnyRef]]
+        InnerHits(
+          total = v("total").toString.toLong,
+          max_score = v("max_score").asInstanceOf[Double],
+          hits =
+            v("hits").asInstanceOf[Seq[Map[String, AnyRef]]].map { hits =>
+              InnerHit(
+                nested = hits.get("_nested").map(_.asInstanceOf[Map[String, AnyRef]]).getOrElse(Map.empty),
+                score = hits("_score").asInstanceOf[Double],
+                source = hits("_source").asInstanceOf[Map[String, AnyRef]],
+                innerHits =
+                  buildInnerHits(hits.getOrElse("inner_hits", null).asInstanceOf[Map[String, Map[String, Any]]]),
+                highlight = hits.get("highlight").map(_.asInstanceOf[Map[String, Seq[String]]]).getOrElse(Map.empty),
+                sort = hits.get("sort").map(_.asInstanceOf[Seq[AnyRef]]).getOrElse(Seq.empty)
+              )
+            }
+        )
+      }
+      .toMap
 
   def innerHits: Map[String, InnerHits] = buildInnerHits(inner_hits)
 }

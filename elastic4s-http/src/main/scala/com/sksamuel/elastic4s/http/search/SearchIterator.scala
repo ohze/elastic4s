@@ -26,7 +26,7 @@ object SearchIterator {
       import com.sksamuel.elastic4s.http.ElasticDsl._
 
       private var _iterator: Iterator[SearchHit] = Iterator.empty
-      private var scrollId: Option[String]      = None
+      private var scrollId: Option[String]       = None
 
       override def hasNext: Boolean = _iterator.hasNext || {
         _iterator = fetchNext()
