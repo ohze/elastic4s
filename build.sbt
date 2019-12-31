@@ -199,6 +199,7 @@ lazy val tests = Project("elastic4s-tests", file("elastic4s-tests"))
       "org.apache.logging.log4j"     % "log4j-slf4j-impl"      % Log4jVersion     % "test",
       "org.apache.logging.log4j"     % "log4j-core"            % Log4jVersion     % "test"
     ),
+    testOptions in Test := Seq(Tests.Filter(s => !s.startsWith("com.sksamuel.elastic4s.aws."))),
     Test / fork := true,
     Test / parallelExecution := false,
     Test / testForkedParallel := false
