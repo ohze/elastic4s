@@ -1,3 +1,4 @@
+dist: xenial
 sudo: required
 
 language: scala
@@ -7,8 +8,10 @@ services:
 
 cache:
   directories:
+    - $HOME/.m2
     - $HOME/.ivy2/cache
     - $HOME/.sbt
+    - $HOME/.coursier
 
 before_install:
 - docker run -d -p 9200:9200 -p 9300:9300 -e "path.repo=/tmp" -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.2
@@ -16,9 +19,6 @@ before_install:
 before_cache:
   - find $HOME/.sbt -name "*.lock" | xargs rm
   - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
-
-before_script:
-- sudo chmod +x /usr/local/bin/sbt
 
 scala:
 - 2.11.12
@@ -28,4 +28,5 @@ script:
 - sbt clean scalafmtCheck scalafmtSbtCheck test
 
 jdk:
-- oraclejdk8
+- openjdk8
+- openjdk11
