@@ -12,23 +12,25 @@ object Build extends AutoPlugin {
 
   object autoImport {
     val org                    = "com.sksamuel.elastic4s"
-    val AkkaVersion            = "2.4.20"
-    val CatsVersion            = "1.0.1"
-    val CirceVersion           = "0.9.0"
-    val CommonsIoVersion       = "2.4"
-    val ElasticsearchVersion   = "6.1.3"
-    val ExtsVersion            = "1.60.0"
-    val JacksonVersion         = "2.9.2"
-    val Json4sVersion          = "3.5.3"
-    val SprayJsonVersion       = "1.3.4"
-    val AWSJavaSdkVersion      = "1.11.258"
-    val Log4jVersion           = "2.9.1"
+    val AkkaVersion            = "2.6.1"
+    val CatsVersion            = "2.1.0"
+    val CirceVersion           = "0.12.3"
+    val CommonsIoVersion       = "2.6"
+    val ElasticsearchVersion   = "6.1.4"
+    val ExtsVersion            = "1.61.1"
+    val JacksonVersion         = "2.10.1"
+    val JodaTimeVersion        = "2.10.5"
+    val Json4sVersion          = "3.6.7"
+    val SprayJsonVersion       = "1.3.5"
+    val SttpVersion            = "1.7.2"
+    val AWSJavaSdkVersion      = "1.11.699"
+    val Log4jVersion           = "2.13.0"
     val LuceneVersion          = "7.1.0"
     val MockitoVersion         = "1.9.5"
-    val PlayJsonVersion        = "2.6.8"
-    val ReactiveStreamsVersion = "1.0.2"
-    val ScalatestVersion       = "3.0.4"
-    val Slf4jVersion           = "1.7.25"
+    val PlayJsonVersion        = "2.8.1"
+    val ReactiveStreamsVersion = "1.0.3"
+    val ScalatestVersion       = "3.0.8"
+    val Slf4jVersion           = "1.7.30"
   }
 
   import autoImport._
@@ -39,7 +41,6 @@ object Build extends AutoPlugin {
     crossScalaVersions := Seq("2.12.10", "2.13.1"),
     publishMavenStyle := true,
     resolvers += Resolver.mavenLocal,
-    resolvers += Resolver.url("https://artifacts.elastic.co/maven"),
     javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:MaxPermSize=2048M", "-XX:+CMSClassUnloadingEnabled"),
     Test / publishArtifact := false,
     fork := false,

@@ -35,7 +35,7 @@ lazy val core = Project("elastic4s-core", file("elastic4s-core"))
   .settings(
     name := "elastic4s-core",
     libraryDependencies ++= Seq(
-      "joda-time"                    % "joda-time"             % "2.9.9",
+      "joda-time"                    % "joda-time"             % JodaTimeVersion,
       "com.fasterxml.jackson.core"   % "jackson-core"          % JacksonVersion,
       "com.fasterxml.jackson.core"   % "jackson-databind"      % JacksonVersion,
       "com.fasterxml.jackson.module" %% "jackson-module-scala" % JacksonVersion
@@ -47,9 +47,9 @@ lazy val tcp = Project("elastic4s-tcp", file("elastic4s-tcp"))
     name := "elastic4s-tcp",
     libraryDependencies ++= Seq(
       "org.elasticsearch"          % "elasticsearch"           % ElasticsearchVersion,
-      "org.locationtech.spatial4j" % "spatial4j"               % "0.6",
+      "org.locationtech.spatial4j" % "spatial4j"               % "0.7",
       "com.vividsolutions"         % "jts"                     % "1.13",
-      "io.netty"                   % "netty-all"               % "4.1.10.Final",
+      "io.netty"                   % "netty-all"               % "4.1.44.Final",
       "org.apache.lucene"          % "lucene-core"             % LuceneVersion,
       "org.apache.lucene"          % "lucene-analyzers-common" % LuceneVersion,
       "org.apache.lucene"          % "lucene-backward-codecs"  % LuceneVersion,
@@ -71,10 +71,10 @@ lazy val tcp = Project("elastic4s-tcp", file("elastic4s-tcp"))
       "org.apache.logging.log4j"   % "log4j-core"              % Log4jVersion,
       "org.apache.logging.log4j"   % "log4j-1.2-api"           % Log4jVersion,
       "org.apache.logging.log4j"   % "log4j-slf4j-impl"        % Log4jVersion,
-      "com.carrotsearch"           % "hppc"                    % "0.7.1",
-      "joda-time"                  % "joda-time"               % "2.9.9",
+      "com.carrotsearch"           % "hppc"                    % "0.8.1",
+      "joda-time"                  % "joda-time"               % JodaTimeVersion,
       "com.fasterxml.jackson.core" % "jackson-core"            % JacksonVersion,
-      "com.tdunning"               % "t-digest"                % "3.1"
+      "com.tdunning"               % "t-digest"                % "3.2"
     )
   )
   .dependsOn(core)
@@ -173,8 +173,8 @@ lazy val sprayjson = Project("elastic4s-spray-json", file("elastic4s-spray-json"
 lazy val sttp = Project("elastic4s-sttp", file("elastic4s-sttp"))
   .settings(
     name := "elastic4s-sttp",
-    libraryDependencies += "com.softwaremill.sttp" %% "core"                             % "1.1.3",
-    libraryDependencies += "com.softwaremill.sttp" %% "async-http-client-backend-future" % "1.1.3"
+    libraryDependencies += "com.softwaremill.sttp" %% "core"                             % SttpVersion,
+    libraryDependencies += "com.softwaremill.sttp" %% "async-http-client-backend-future" % SttpVersion
   )
   .dependsOn(core, http)
 
@@ -194,9 +194,9 @@ lazy val tests = Project("elastic4s-tests", file("elastic4s-tests"))
       "com.fasterxml.jackson.core"   % "jackson-core"          % JacksonVersion   % "test",
       "com.fasterxml.jackson.core"   % "jackson-databind"      % JacksonVersion   % "test",
       "com.fasterxml.jackson.module" %% "jackson-module-scala" % JacksonVersion   % "test" exclude ("org.scala-lang", "scala-library"),
-      "org.apache.logging.log4j"     % "log4j-api"             % "2.8.2"          % "test",
-      "org.apache.logging.log4j"     % "log4j-slf4j-impl"      % "2.8.2"          % "test",
-      "org.apache.logging.log4j"     % "log4j-core"            % "2.8.2"          % "test"
+      "org.apache.logging.log4j"     % "log4j-api"             % Log4jVersion     % "test",
+      "org.apache.logging.log4j"     % "log4j-slf4j-impl"      % Log4jVersion     % "test",
+      "org.apache.logging.log4j"     % "log4j-core"            % Log4jVersion     % "test"
     ),
     Test / fork := true,
     Test / parallelExecution := false,
