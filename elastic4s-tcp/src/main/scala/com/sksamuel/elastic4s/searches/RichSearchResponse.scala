@@ -22,8 +22,8 @@ case class RichSearchResponse(original: SearchResponse) {
 
   def hits: Array[RichSearchHit] = original.getHits.getHits.map(RichSearchHit.apply)
 
-  def to[T: HitReader]: IndexedSeq[T]                        = hits.map(_.to[T]).toIndexedSeq
-  def safeTo[T: HitReader]: IndexedSeq[Either[Throwable, T]] = hits.map(_.safeTo[T]).toIndexedSeq
+  def to[T: HitReader]: IndexedSeq[T]                        = hits.toIndexedSeq.map(_.to[T])
+  def safeTo[T: HitReader]: IndexedSeq[Either[Throwable, T]] = hits.toIndexedSeq.map(_.safeTo[T])
 
   def scrollId: String            = original.getScrollId
   def scrollIdOpt: Option[String] = Option(scrollId)

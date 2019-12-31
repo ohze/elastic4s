@@ -16,7 +16,7 @@ case class JavaClientExceptionWrapper(t: Throwable) extends RuntimeException(t)
 // an implementation of the elastic4s HttpRequestClient that wraps the elasticsearch java client
 class ElasticsearchJavaRestClient(client: RestClient) extends HttpRequestClient {
 
-  import scala.collection.JavaConverters._
+  import scala.jdk.CollectionConverters._
 
   private def future(callback: ResponseListener => Any): Future[HttpResponse] = {
     val p = Promise[HttpResponse]()
@@ -50,7 +50,7 @@ class ElasticsearchJavaRestClient(client: RestClient) extends HttpRequestClient 
       s"Executing elastic request $method:$endpoint?${params.map { case (k, v) => k + "=" + v }.mkString("&")}"
     )
     val callback =
-      client.performRequestAsync(method, endpoint, params.mapValues(_.toString).asJava, _: ResponseListener)
+      client.performRequestAsync(method, endpoint, params.mapValues(_.toString).toMap.asJava, _: ResponseListener)
     future(callback)
   }
 
@@ -76,7 +76,7 @@ class ElasticsearchJavaRestClient(client: RestClient) extends HttpRequestClient 
 
     val callback = client.performRequestAsync(method,
                                               endpoint,
-                                              params.mapValues(_.toString).asJava,
+                                              params.mapValues(_.toString).toMap.asJava,
                                               apacheEntity,
                                               _: ResponseListener)
     future(callback)

@@ -255,7 +255,7 @@ class BulkActor[T](client: HttpClient,
     def bulkDef: BulkDefinition = {
       val defs   = buffer.map(t => builder.request(t))
       val policy = if (config.refreshAfterOp) RefreshPolicy.Immediate else RefreshPolicy.NONE
-      BulkDefinition(defs).refresh(policy)
+      BulkDefinition(defs.toIndexedSeq).refresh(policy)
     }
 
     sent = sent + buffer.size

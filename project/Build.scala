@@ -53,6 +53,7 @@ object Build extends AutoPlugin {
     scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8"),
     javacOptions := Seq("-source", "1.7", "-target", "1.7"),
     libraryDependencies ++= Seq(
+      "org.scala-lang.modules" %% "scala-collection-compat" % "2.1.3",
       "com.sksamuel.exts" %% "exts"       % ExtsVersion,
       "org.typelevel"     %% "cats-core"  % CatsVersion,
       "org.slf4j"         % "slf4j-api"   % Slf4jVersion,

@@ -2,7 +2,7 @@ package com.sksamuel.elastic4s.searches.highlighting
 
 import com.sksamuel.elastic4s.searches.{HighlightFieldDefinition, HighlightOptionsDefinition, QueryBuilderFn}
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder
-import scala.collection.JavaConversions._
+import scala.jdk.CollectionConverters._
 
 object HighlightBuilderFn {
   def apply(options: HighlightOptionsDefinition, fields: Seq[HighlightFieldDefinition]): HighlightBuilder = {
@@ -24,7 +24,7 @@ object HighlightBuilderFn {
     options.numOfFragments.foreach(int => builder.numOfFragments(int))
     options.order.foreach(builder.order)
     options.phraseLimit.foreach(int => builder.phraseLimit(int))
-    options.options.foreach(options => builder.options(options))
+    options.options.foreach(options => builder.options(options.asJava))
 
     if (options.postTags.nonEmpty)
       builder.postTags(options.postTags: _*)
