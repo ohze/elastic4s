@@ -126,6 +126,7 @@ lazy val httpstreams = Project("elastic4s-http-streams", file("elastic4s-http-st
     name := "elastic4s-http-streams",
     libraryDependencies += "com.typesafe.akka"   %% "akka-actor"          % AkkaVersion,
     libraryDependencies += "org.reactivestreams" % "reactive-streams"     % ReactiveStreamsVersion,
+    libraryDependencies += "org.scalatestplus"   %% "testng-6-7"          % "3.1.0.0" % Test,
     libraryDependencies += "org.reactivestreams" % "reactive-streams-tck" % ReactiveStreamsVersion % "test"
   )
   .dependsOn(http, testkit % "test", jackson % "test")

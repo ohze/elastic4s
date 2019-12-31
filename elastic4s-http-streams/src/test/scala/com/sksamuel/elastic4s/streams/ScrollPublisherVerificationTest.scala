@@ -6,7 +6,7 @@ import com.sksamuel.elastic4s.jackson.ElasticJackson
 import com.sksamuel.elastic4s.testkit.DockerTests
 import org.reactivestreams.Publisher
 import org.reactivestreams.tck.{PublisherVerification, TestEnvironment}
-import org.scalatest.testng.TestNGSuiteLike
+import org.scalatestplus.testng.TestNGSuiteLike
 
 import scala.util.Try
 

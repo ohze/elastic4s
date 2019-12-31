@@ -29,7 +29,7 @@ object Build extends AutoPlugin {
     val MockitoVersion         = "1.9.5"
     val PlayJsonVersion        = "2.8.1"
     val ReactiveStreamsVersion = "1.0.3"
-    val ScalatestVersion       = "3.0.8"
+    val ScalatestVersion       = "3.1.0"
     val Slf4jVersion           = "1.7.30"
   }
 
