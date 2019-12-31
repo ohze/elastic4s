@@ -6,7 +6,7 @@ import com.sksamuel.elastic4s.analyzers._
 import com.sksamuel.elastic4s.http.index.CreateIndexContentBuilder
 import com.sksamuel.elastic4s.mappings.PrefixTree
 import com.sksamuel.elastic4s.mappings.dynamictemplate.DynamicMapping
-import org.scalatest.mockito.MockitoSugar
+import org.scalatestplus.mockito.MockitoSugar
 import org.scalatest.{FlatSpec, Matchers, OneInstancePerTest}
 
 import scala.concurrent.duration._

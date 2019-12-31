@@ -2,7 +2,7 @@ package com.sksamuel.elastic4s.admin
 
 import com.sksamuel.elastic4s.RefreshPolicy
 import com.sksamuel.elastic4s.testkit.DockerTests
-import org.scalatest.mockito.MockitoSugar
+import org.scalatestplus.mockito.MockitoSugar
 import org.scalatest.{Matchers, WordSpec}
 
 class IndexTemplateHttpTest

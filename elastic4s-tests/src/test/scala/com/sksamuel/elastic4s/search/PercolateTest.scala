@@ -2,7 +2,7 @@
 //
 //import com.sksamuel.elastic4s.DocumentRef
 //import com.sksamuel.elastic4s.testkit.{ClassloaderLocalNodeProvider, ElasticSugar}
-//import org.scalatest.mockito.MockitoSugar
+//import org.scalatestplus.mockito.MockitoSugar
 //import org.scalatest.{FlatSpec, Matchers}
 //
 //class PercolateTest extends FlatSpec with Matchers with MockitoSugar with ElasticSugar with ClassloaderLocalNodeProvider {

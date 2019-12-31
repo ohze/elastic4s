@@ -3,7 +3,7 @@
 //
 //import com.sksamuel.elastic4s.testkit.{ClassloaderLocalNodeProvider, ElasticSugar}
 //import org.scalatest.FreeSpec
-//import org.scalatest.mockito.MockitoSugar
+//import org.scalatestplus.mockito.MockitoSugar
 //
 //import scala.concurrent.duration._
 //import scala.util.Try

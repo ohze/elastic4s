@@ -4,7 +4,7 @@ import com.sksamuel.elastic4s.ElasticDsl._
 import com.sksamuel.elastic4s.JsonSugar
 import com.sksamuel.elastic4s.http.index.CreateIndexTemplateBodyFn
 import com.sksamuel.elastic4s.mappings.PrefixTree
-import org.scalatest.mockito.MockitoSugar
+import org.scalatestplus.mockito.MockitoSugar
 import org.scalatest.{FlatSpec, Matchers, OneInstancePerTest}
 
 class CreateIndexTemplateApiTest extends FlatSpec with MockitoSugar with JsonSugar with Matchers with OneInstancePerTest {
