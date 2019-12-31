@@ -47,7 +47,7 @@ lazy val tcp = Project("elastic4s-tcp", file("elastic4s-tcp"))
     name := "elastic4s-tcp",
     libraryDependencies ++= Seq(
       "org.elasticsearch"          % "elasticsearch"           % ElasticsearchVersion,
-      "org.locationtech.spatial4j" % "spatial4j"               % "0.7",
+      "org.locationtech.spatial4j" % "spatial4j"               % "0.6",
       "com.vividsolutions"         % "jts"                     % "1.13",
       "io.netty"                   % "netty-all"               % "4.1.44.Final",
       "org.apache.lucene"          % "lucene-core"             % LuceneVersion,
