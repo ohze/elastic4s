@@ -35,8 +35,8 @@ object Build extends AutoPlugin {
 
   override def projectSettings = Seq(
     organization := org,
-    scalaVersion := "2.11.12",
-    crossScalaVersions := Seq("2.11.12", "2.12.4"),
+    scalaVersion := "2.13.1",
+    crossScalaVersions := Seq("2.12.10", "2.13.1"),
     publishMavenStyle := true,
     resolvers += Resolver.mavenLocal,
     resolvers += Resolver.url("https://artifacts.elastic.co/maven"),
